@@ -48,7 +48,6 @@ function renderPostCard (images) {
 
     likeButtonEl.addEventListener("click", () => {
         console.log("clicked", imageData.id, imageData.likes);
-    // const previousLikes = imageData.likes ;
 
     const fetchOptions = {
         method: "PATCH",
@@ -63,9 +62,7 @@ function renderPostCard (images) {
         .then((updatedLikes) => {
           console.log("Inside PATCH Fetch: ", updatedLikes);
           spanEl.innerText = `${imageData.likes += 1} likes`;
-
         });
-      
     })
     
     likesSectionDivEl.append(spanEl, likeButtonEl);
@@ -91,12 +88,41 @@ function renderPostCard (images) {
     userInputEl.type = "text";
     userInputEl.name = "comment";
     userInputEl.placeholder = "Add a comment...";
+
+    // userInputEl.addEventListener("input", () => {
+    //     console.log("submited");
+    // })
+
     formEl.append(userInputEl);
 
     const commentButtonEl = document.createElement("button");
     commentButtonEl.className = "comment-button";
     commentButtonEl.type = "submit";
     commentButtonEl.innerText = "Post";
+
+    formEl.addEventListener("submit", (event) => {
+        console.log("submited", imageData.comment);
+        event.preventDefault();
+
+        const fetchOptions = {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: userInputEl,
+                imageId: imageData.id,
+            })
+        };
+        
+        fetch('http://localhost:3000/comments', fetchOptions)
+            .then((res) => res.json())
+            .then((newComment) => {
+              console.log("Inside POST Fetch: ", newComment);
+                // smth to do with line 112-114
+            });
+
+    })
 
     formEl.append(commentButtonEl);
 
