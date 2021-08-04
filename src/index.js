@@ -76,8 +76,81 @@ function renderPostCard (images) {
         const commentEl = document.createElement("li");
         commentEl.innerText = comment.content;
         commentsUlEl.append(commentEl);
-        
+
     });
+
+
+
+    // **** Mornig lecture syntax START **** \\
+
+    // likesButton.addEventListener("click", () => {
+    //     console.log("Single Source Of Truth: ", images)
+    
+    //     // You need access to the "id" and the current "likes" of an image/post
+    
+    //     // Write our fetch request in here...
+    //     const url = `http://localhost:3000/images/${image.id}`
+    
+    //     const imageUpdate = {
+    //       likes: image.likes + 1,
+    //     }
+    
+    //     const fetchOptions = {
+    //       method: "PATCH",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(imageUpdate),
+    //     }
+    
+    //     fetch(url, fetchOptions)
+    //       .then(res => res.json())
+    //       .then(updatedImage => {
+    //         console.log("Inside PATCH fetch: ", updatedImage)
+    
+    //         // likesSpanEl.innerText = `${updatedImage.likes} likes`
+    
+    //         // const imageCardEl = renderImageCard(updatedImage)
+    
+    //         // imagesSectionEl.append(imageCardEl)
+    
+    //         const updatedImages = []
+    
+    //         for (let i = 0; i < images.length; i++) {
+    //           const image = images[i]
+    
+    //           if (image.id === updatedImage.id) {
+    //             console.log("Copy: ", { ...image })
+    //             updatedImages.push({
+    //               ...image,
+    //               likes: updatedImage.likes,
+    //             })
+    //           } else {
+    //             updatedImages.push({
+    //               ...image,
+    //             })
+    //           }
+    //         }
+    
+    //         console.log("Update for SSOT: ", updatedImages)
+    
+    //         // const updatedImages = images.map(image => {
+    //         //   if (image.id !== updatedImage.id) return image
+    
+    //         //   return {
+    //         //     ...image,
+    //         //     likes: updatedImage.likes,
+    //         //   }
+    //         // })
+    
+    //         images = updatedImages
+    
+    //         renderImagesList(images)
+    //       })
+    //   })
+
+      /// Mornig lecture syntax END
+
     
     articleEl.append(commentsUlEl);
 
